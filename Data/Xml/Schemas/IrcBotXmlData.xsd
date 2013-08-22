@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="IrcBotXmlData"
+    targetNamespace="http://tempuri.org/IrcBotXmlData.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/IrcBotXmlData.xsd"
+    xmlns:mstns="http://tempuri.org/IrcBotXmlData.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="DataContainer" type="IrcBotDataContainer"></xs:element>
+  <xs:complexType name="IrcBotDataContainer">
+    <xs:sequence>
+      <xs:element name="Admins" type="Admin" minOccurs="0" maxOccurs="unbounded">
+      </xs:element>
+      <xs:element name="Rules" type="Rule" minOccurs="0" maxOccurs="unbounded">
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Admin">
+    <xs:sequence>
+      <xs:element name="Nick" type="xs:string"></xs:element>
+      <xs:element name="UserFilter" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Rule">
+    <xs:sequence>
+      <xs:element name="Id" type="xs:int"></xs:element>
+      <xs:element name="ReceivedCommand" type="IrcCommand"></xs:element>  
+      <xs:element name="Actions" type="RuleAction" minOccurs="0" maxOccurs="unbounded">
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RuleAction">
+    <xs:sequence>
+      <xs:element name="Id" type="xs:int"></xs:element>
+      <xs:element name="Command" type="IrcCommand"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IrcCommand">
+    <xs:sequence>
+      <xs:element name="Nick" type="xs:string"></xs:element>
+      <xs:element name="User" type="xs:string"></xs:element>
+      <xs:element name="Command" type="xs:string"></xs:element>
+      <xs:element name="Parameter" type="xs:string"></xs:element>
+    </xs:sequence>  
+  </xs:complexType>
+</xs:schema>
